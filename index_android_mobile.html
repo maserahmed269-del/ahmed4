@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#040810">
+    <title>1xBet Pro - منصة الألعاب السريعة والتفاعلية</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            950: '#040810',
+                            900: '#08101e',
+                            800: '#0f1d32',
+                            700: '#172b4a',
+                            600: '#233f6b'
+                        },
+                        brand: {
+                            blue: '#1675e0',
+                            blueHover: '#1260bd',
+                            green: '#00d26a',
+                            greenHover: '#00b55b',
+                            gold: '#ffb703',
+                            purple: '#8338ec',
+                            pink: '#ff007f',
+                            red: '#ef476f'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Cairo', 'Inter', 'sans-serif'],
+                        num: ['Inter', 'Cairo', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #040810;
+            color: #ffffff;
+            font-family: 'Cairo', sans-serif;
+            overflow-x: hidden;
+            transition: background 0.4s ease;
+        }
+        .num-font {
+            font-family: 'Inter', sans-serif;
+            font-variant-numeric: tabular-nums;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #040810;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #172b4a;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1675e0;
+        }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 15px rgba(22, 117, 224, 0.4), inset 0 0 10px rgba(22, 117, 224, 0.2); }
+            50% { box-shadow: 0 0 35px rgba(0, 210, 106, 0.7), inset 0 0 18px rgba(0, 210, 106, 0.4); }
+        }
+        .glow-effect {
+            animation: glowPulse 2.5s infinite;
+        }
+        @keyframes neonBorder {
+            0%, 100% { border-color: rgba(22, 117, 224, 0.6); }
+            50% { border-color: rgba(0, 210, 106, 0.9); }
+        }
+        .neon-box {
+            animation: neonBorder 3s infinite;
+        }
+        @keyframes floatAnim {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .floating {
+            animation: floatAnim 3s ease-in-out infinite;
+        }
+    </style>
+
+    <style id="mobile-responsive-fixes">
+        /* Mobile-first refinements for Android phones */
+        *, *::before, *::after { box-sizing: border-box; }
+        html { width: 100%; min-height: 100%; -webkit-text-size-adjust: 100%; }
+        body { width: 100%; min-width: 320px; min-height: 100dvh; }
+        img, canvas, video, svg { max-width: 100%; }
+        input, select, textarea, button { font: inherit; }
+        input, select, textarea { max-width: 100%; min-width: 0; }
+        button { touch-action: manipulation; }
+        #crash-canvas { display: block; width: 100%; height: 100%; }
+        #toast-container { left: 0; right: 0; bottom: max(12px, env(safe-area-inset-bottom)); width: 100%; max-width: 100%; padding-inline: 12px; }
+
+        @media (max-width: 640px) {
+            body { overflow-x: clip; }
+            header { padding-top: env(safe-area-inset-top); }
+            header > div { padding-left: 10px !important; padding-right: 10px !important; }
+            header > div > div { gap: 9px !important; padding-top: 10px !important; padding-bottom: 10px !important; }
+            header .text-2xl { font-size: 1.2rem !important; }
+            header .w-11.h-11 { width: 38px !important; height: 38px !important; }
+            header nav {
+                order: 3 !important;
+                width: calc(100vw - 20px) !important;
+                max-width: calc(100vw - 20px) !important;
+                justify-content: flex-start !important;
+                overflow-x: auto !important;
+                overflow-y: hidden !important;
+                scrollbar-width: none;
+                -webkit-overflow-scrolling: touch;
+                gap: 4px !important;
+                scroll-snap-type: x proximity;
+            }
+            header nav::-webkit-scrollbar { display: none; }
+            header nav button {
+                flex: 0 0 auto !important;
+                min-width: 62px;
+                min-height: 44px;
+                padding: 8px 9px !important;
+                gap: 5px !important;
+                font-size: 10px !important;
+                white-space: nowrap;
+                scroll-snap-align: start;
+            }
+            header nav button i { font-size: 12px; }
+            header > div > div > div:last-child { gap: 6px !important; }
+            header > div > div > div:last-child > div { padding: 6px 9px !important; gap: 6px !important; }
+            header > div > div > div:last-child > div .w-8 { width: 28px !important; height: 28px !important; }
+            header > div > div > div:last-child > button { min-height: 42px; padding: 8px 10px !important; }
+            main { padding: 12px 10px 22px !important; }
+            main section { min-width: 0; }
+            main .rounded-3xl { border-radius: 18px !important; }
+            main .p-6 { padding: 14px !important; }
+            main .p-5 { padding: 12px !important; }
+            #view-crash .h-\[360px\] { height: clamp(230px, 62vw, 320px) !important; }
+            #crash-multiplier-display { font-size: clamp(2.5rem, 12vw, 4rem) !important; }
+            #view-crash .w-56 { width: min(14rem, 75vw) !important; }
+            #view-crash input[type="number"], #view-crash input[type="text"],
+            #view-deposit input, #view-withdraw input, #auth-screen input,
+            #auth-screen select, #view-settings input, #view-settings select,
+            #view-reviews textarea {
+                width: 100%; min-height: 44px; font-size: 16px !important;
+            }
+            #auth-screen { padding: 12px !important; align-items: flex-start !important; }
+            #auth-screen > div { margin-top: auto; margin-bottom: auto; max-height: calc(100dvh - 24px); overflow-y: auto; }
+            #auth-screen .p-6 { padding: 16px !important; }
+            #splash-screen { padding: 14px !important; }
+            #splash-screen > div { padding: 20px !important; }
+            #view-games .grid, #view-reviews .grid, #view-settings .grid { min-width: 0; }
+            footer { padding-bottom: max(18px, env(safe-area-inset-bottom)); }
+            footer .max-w-7xl { text-align: center; }
+        }
+
+        @media (max-width: 380px) {
+            header .bg-brand-green\/20 { display: none; }
+            header nav button { min-width: 56px; padding-inline: 7px !important; }
+            main { padding-inline: 8px !important; }
+            #view-crash .grid-cols-4 { gap: 5px !important; }
+        }
+
+        @media (orientation: landscape) and (max-height: 500px) {
+            #view-crash .h-\[360px\] { height: 68vh !important; min-height: 190px; }
+            #auth-screen > div { max-height: 92dvh; }
+        }
+    </style>
+
+</head>
+<body class="min-h-screen flex flex-col bg-navy-950 text-white selection:bg-brand-blue selection:text-white">
+
+    <!-- ==================== SPLASH SCREEN (LOADER WITH 5 POINTS) ==================== -->
+    <div id="splash-screen" class="fixed inset-0 z-50 bg-navy-950 flex flex-col items-center justify-center p-4 transition-opacity duration-700">
+        <div class="max-w-md w-full bg-navy-900 border border-navy-700 rounded-3xl p-8 text-center shadow-2xl glow-effect space-y-6">
+            <div class="w-24 h-24 rounded-3xl bg-gradient-to-tr from-brand-blue via-brand-purple to-brand-green flex items-center justify-center mx-auto shadow-2xl floating">
+                <span class="text-4xl font-black text-white num-font tracking-tighter">1x</span>
+            </div>
+            <div>
+                <h1 class="text-3xl font-black tracking-tight text-white num-font">1x<span class="text-brand-blue">BET PRO</span></h1>
+                <p class="text-xs text-slate-400 mt-1">منصة الألعاب والكازينو السريعة الاحترافية</p>
+            </div>
+
+            <!-- 5 Loading Points Progress -->
+            <div class="space-y-3 pt-2">
+                <div class="flex items-center justify-center gap-3">
+                    <div id="dot-1" class="w-4 h-4 rounded-full bg-navy-700 transition-all duration-300"></div>
+                    <div id="dot-2" class="w-4 h-4 rounded-full bg-navy-700 transition-all duration-300"></div>
+                    <div id="dot-3" class="w-4 h-4 rounded-full bg-navy-700 transition-all duration-300"></div>
+                    <div id="dot-4" class="w-4 h-4 rounded-full bg-navy-700 transition-all duration-300"></div>
+                    <div id="dot-5" class="w-4 h-4 rounded-full bg-navy-700 transition-all duration-300"></div>
+                </div>
+                <p id="splash-status-text" class="text-xs font-bold text-brand-green num-font">جاري تهيئة قاعدة البيانات السحابية الآمنة...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== AUTHENTICATION SCREEN (CENTERED & CLEAN) ==================== -->
+    <div id="auth-screen" class="hidden fixed inset-0 z-40 bg-navy-950/95 backdrop-blur-2xl flex items-center justify-center p-4 overflow-y-auto">
+        <div class="max-w-md w-full bg-navy-900 border border-navy-700/80 rounded-3xl shadow-2xl overflow-hidden my-auto">
+            <div class="bg-gradient-to-br from-navy-950 via-navy-900 to-brand-blue/30 p-6 text-center border-b border-navy-700/80 relative">
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-brand-blue to-brand-green flex items-center justify-center shadow-lg mx-auto mb-3">
+                    <span class="text-2xl font-black text-white num-font">1x</span>
+                </div>
+                <h1 class="text-2xl font-black tracking-tight text-white num-font">1x<span class="text-brand-blue">BET PRO</span></h1>
+                <p class="text-xs text-slate-300 mt-1">سجل دخولك أو أنشئ حساباً جديداً للبدء</p>
+            </div>
+
+            <div class="p-6 space-y-5">
+                <div class="grid grid-cols-2 gap-1.5 bg-navy-950 p-1.5 rounded-2xl border border-navy-700">
+                    <button onclick="switchAuthTab('register')" id="auth-tab-register" class="py-2.5 rounded-xl text-xs font-bold transition-all bg-brand-blue text-white shadow cursor-pointer">انشاء حساب جديد</button>
+                    <button onclick="switchAuthTab('login')" id="auth-tab-login" class="py-2.5 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white cursor-pointer">تسجيل دخول</button>
+                </div>
+
+                <form id="auth-panel-register" onsubmit="handleRegisterSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 mb-1">اسم المستخدم</label>
+                        <input type="text" id="reg-username" required placeholder="مثال: يوسف أحمد"
+                            class="w-full bg-navy-950 border border-navy-700 focus:border-brand-blue focus:outline-none rounded-xl px-3.5 py-3 text-sm text-white">
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 mb-1">رقم الهاتف الذكي</label>
+                            <input type="text" id="reg-contact" required placeholder="010xxxxxxxx"
+                                class="w-full bg-navy-950 border border-navy-700 focus:border-brand-blue focus:outline-none rounded-xl px-3.5 py-3 text-sm text-white num-font">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 mb-1">العملة</label>
+                            <select id="reg-currency" class="w-full bg-navy-950 border border-navy-700 focus:border-brand-blue focus:outline-none rounded-xl px-3 py-3 text-sm text-white font-bold">
+                                <option value="EGP">جنيه مصري (EGP)</option>
+                                <option value="USD">دولار (USD)</option>
+                                <option value="SAR">ريال (SAR)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 mb-1">كلمة المرور</label>
+                        <input type="password" id="reg-password" required placeholder="••••••••"
+                            class="w-full bg-navy-950 border border-navy-700 focus:border-brand-blue focus:outline-none rounded-xl px-3.5 py-3 text-sm text-white">
+                    </div>
+                    <button type="submit" class="w-full bg-brand-green hover:bg-brand-greenHover active:scale-[0.99] text-navy-950 font-black py-3.5 rounded-xl shadow-lg transition-all cursor-pointer text-sm">
+                        إنشاء حساب سحابي جديد
+                    </button>
+                </form>
+
+                <form id="auth-panel-login" onsubmit="handleLoginSubmit(event)" class="hidden space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 mb-1">رقم الهاتف أو اسم المستخدم</label>
+                        <input type="text" id="login-contact" required placeholder="رقم الهاتف أو الاسم"
+                            class="w-full bg-navy-950 border border-navy-700 focus:border-brand-blue focus:outline-none rounded-xl px-3.5 py-3 text-sm text-white num-font">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 mb-1">كلمة المرور</label>
+                        <input type="password" id="login-password" required placeholder="••••••••"
+                            class="w-full bg-navy-950 border border-navy-700 focus:border-brand-blue focus:outline-none rounded-xl px-3.5 py-3 text-sm text-white">
+                    </div>
+                    <button type="submit" class="w-full bg-brand-blue hover:bg-brand-blueHover active:scale-[0.99] text-white font-black py-3.5 rounded-xl shadow-lg transition-all cursor-pointer text-sm">
+                        تسجيل الدخول إلى حسابك
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="sticky top-0 z-30 bg-navy-900/95 backdrop-blur-md border-b border-navy-700/80 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap items-center justify-between py-3.5 gap-3">
+                
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-2.5 cursor-pointer" onclick="switchTab('crash')">
+                        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-blue to-brand-green flex items-center justify-center shadow-lg glow-effect">
+                            <span class="text-white font-black text-lg num-font">1x</span>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="text-2xl font-black tracking-tight text-white num-font">1x<span class="text-brand-blue">PRO</span></span>
+                                <span class="bg-brand-green/20 text-brand-green border border-brand-green/40 text-[10px] font-bold px-2 py-0.5 rounded-full">DB LIVE</span>
+                            </div>
+                            <p id="header-username-display" class="text-[11px] text-slate-300 font-semibold leading-none mt-0.5">مرحباً بك</p>
+                        </div>
+                    </div>
+                </div>
+
+                <nav class="flex items-center bg-navy-950 p-1.5 rounded-2xl border border-navy-700 order-3 md:order-2 w-full md:w-auto justify-around md:justify-start gap-1">
+                    <button onclick="switchTab('crash')" id="nav-crash" class="nav-btn flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold transition-all bg-brand-blue text-white shadow cursor-pointer">
+                        <i class="fa-solid fa-plane-up"></i>
+                        <span>الطيارة</span>
+                    </button>
+                    <button onclick="switchTab('games')" id="nav-games" class="nav-btn flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all cursor-pointer">
+                        <i class="fa-solid fa-dice text-brand-gold"></i>
+                        <span>ألعاب الكازينو</span>
+                    </button>
+                    <button onclick="switchTab('deposit')" id="nav-deposit" class="nav-btn flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all cursor-pointer">
+                        <i class="fa-solid fa-wallet text-brand-green"></i>
+                        <span>الإيداع</span>
+                    </button>
+                    <button onclick="switchTab('withdraw')" id="nav-withdraw" class="nav-btn flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all cursor-pointer">
+                        <i class="fa-solid fa-money-bill-transfer text-brand-gold"></i>
+                        <span>السحب</span>
+                    </button>
+                    <button onclick="switchTab('reviews')" id="nav-reviews" class="nav-btn flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all cursor-pointer">
+                        <i class="fa-solid fa-star text-amber-400"></i>
+                        <span>التقييمات</span>
+                    </button>
+                    <button onclick="switchTab('settings')" id="nav-settings" class="nav-btn flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all cursor-pointer">
+                        <i class="fa-solid fa-gear text-slate-300"></i>
+                        <span>الإعدادات</span>
+                    </button>
+                </nav>
+
+                <div class="flex items-center gap-2.5 order-2 md:order-3">
+                    <div class="bg-navy-950 border border-navy-700 rounded-2xl px-3.5 py-2 flex items-center gap-2.5 shadow-inner">
+                        <div class="w-8 h-8 rounded-xl bg-brand-green/20 text-brand-green flex items-center justify-center">
+                            <i class="fa-solid fa-wallet text-sm"></i>
+                        </div>
+                        <div class="text-right">
+                            <span class="block text-[10px] text-slate-400 leading-tight">الرصيد</span>
+                            <span id="wallet-balance" class="text-sm font-bold text-brand-green num-font">0.00</span>
+                            <span id="wallet-currency-label" class="text-[11px] text-slate-300 font-bold num-font">EGP</span>
+                        </div>
+                    </div>
+                    <button onclick="switchTab('deposit')" class="bg-brand-green hover:bg-brand-greenHover active:scale-95 text-navy-950 font-bold text-xs px-3.5 py-3 rounded-xl transition-all flex items-center gap-1 shadow cursor-pointer">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>شحن</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-5 left-5 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none px-4 sm:px-0"></div>
+
+    <!-- Main Views Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- ==================== TAB 0: CRASH / AVIATOR + REAL PREDICTOR & PLAYERS ==================== -->
+        <section id="view-crash" class="space-y-6">
+            
+            <div class="bg-navy-900 border border-navy-700 rounded-2xl p-3 flex items-center gap-3 overflow-hidden shadow-md">
+                <div class="flex items-center gap-1.5 text-xs font-bold text-slate-400 whitespace-nowrap pl-2 border-l border-navy-700">
+                    <i class="fa-solid fa-clock-rotate-left text-brand-blue"></i>
+                    <span>سجل المضاعفات:</span>
+                </div>
+                <div id="crash-history-bar" class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5">
+                    <!-- Injected via JS -->
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                
+                <div class="lg:col-span-8 space-y-4">
+                    
+                    <div class="relative bg-[#060e1b] border-2 border-brand-blue/30 rounded-3xl overflow-hidden shadow-2xl h-[360px] sm:h-[420px] select-none neon-box">
+                        <canvas id="crash-canvas" class="w-full h-full block"></canvas>
+                        
+                        <div class="absolute inset-0 pointer-events-none flex flex-col items-center justify-center p-4 text-center">
+                            <div id="crash-hud-waiting" class="flex flex-col items-center">
+                                <div class="w-16 h-16 rounded-full bg-brand-blue/20 border border-brand-blue/50 flex items-center justify-center mb-3 text-brand-blue animate-bounce">
+                                    <i class="fa-solid fa-plane-departure text-3xl"></i>
+                                </div>
+                                <p class="text-base font-bold text-slate-200">الرحلة القادمة للإقلاع...</p>
+                                <p id="crash-countdown-text" class="text-xs text-slate-400 mt-1 num-font">تبدأ خلال 5.0 ثانية</p>
+                                <div class="w-56 h-2 bg-navy-950 rounded-full overflow-hidden mt-3 border border-navy-700">
+                                    <div id="crash-countdown-bar" class="h-full bg-gradient-to-l from-brand-green to-brand-blue transition-all duration-75" style="width: 100%"></div>
+                                </div>
+                            </div>
+
+                            <div id="crash-hud-active" class="hidden flex-col items-center">
+                                <span id="crash-status-label" class="hidden bg-red-500/20 border border-red-500/50 text-red-400 text-xs font-extrabold px-3.5 py-1 rounded-full mb-2">
+                                    تحطمت الطائرة! (FLEW AWAY)
+                                </span>
+                                <div id="crash-multiplier-display" class="text-6xl sm:text-8xl font-black text-white num-font tracking-tight drop-shadow-[0_4px_25px_rgba(0,0,0,0.9)]">
+                                    1.00x
+                                </div>
+                                <div id="crash-live-win-banner" class="hidden mt-3 bg-brand-green/20 border border-brand-green/50 text-brand-green px-4 py-1.5 rounded-xl text-xs sm:text-sm font-extrabold backdrop-blur-md">
+                                    تم السحب بنجاح! +<span id="crash-won-amount" class="num-font">0.00</span> <span class="currency-unit num-font">EGP</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="absolute top-3.5 right-3.5 bg-navy-950/85 backdrop-blur-md border border-navy-700 px-3 py-1 rounded-xl text-[11px] text-slate-300 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-brand-green animate-ping"></span>
+                            <span>1xCrash مباشر</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-navy-900 border border-navy-700 rounded-3xl p-5 shadow-xl">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                            <div class="md:col-span-7 space-y-3.5">
+                                <div class="flex items-center justify-between text-xs">
+                                    <label class="text-slate-300 font-bold">مبلغ الرهان (<span class="currency-unit num-font">EGP</span>):</label>
+                                    <span class="text-[11px] text-brand-green">مرن بالكامل</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <button onclick="adjustCrashStake(0.5)" class="bg-navy-950 hover:bg-navy-700 border border-navy-700 text-slate-300 font-bold text-xs px-3.5 py-3 rounded-xl transition cursor-pointer">1/2</button>
+                                    <div class="relative flex-1">
+                                        <input type="text" id="crash-stake-input" value="50"
+                                            class="w-full bg-navy-950 border border-navy-700 focus:border-brand-blue focus:outline-none rounded-xl px-4 py-3 text-white font-black text-lg num-font text-center">
+                                    </div>
+                                    <button onclick="adjustCrashStake(2)" class="bg-navy-950 hover:bg-navy-700 border border-navy-700 text-slate-300 font-bold text-xs px-3.5 py-3 rounded-xl transition cursor-pointer">2x</button>
+                                </div>
+                                <div class="grid grid-cols-4 gap-2">
+                                    <button onclick="setCrashStake(10)" class="bg-navy-950 hover:bg-navy-700 border border-navy-700 rounded-xl py-2 text-xs font-bold text-slate-300 cursor-pointer">10</button>
+                                    <button onclick="setCrashStake(50)" class="bg-navy-950 hover:bg-navy-700 border border-navy-700 rounded-xl py-2 text-xs font-bold text-slate-300 cursor-pointer">50</button>
+                                    <button onclick="setCrashStake(200)" class="bg-navy-950 hover:bg-navy-700 border border-navy-700 rounded-xl py-2 text-xs font-bold text-slate-300 cursor-pointer">200</button>
+                                    <button onclick="setCrashStake('max')" class="bg-navy-950 hover:bg-navy-700 border border-navy-700 rounded-xl py-2 text-xs font-bold text-brand-blue cursor-pointer">MAX</button>
+                                </div>
+                            </div>
+
+                            <div class="md:col-span-5 h-full flex items-stretch">
+                                <button id="crash-action-btn" onclick="handleCrashAction()"
+                                    class="w-full min-h-[104px] rounded-2xl bg-brand-green hover:bg-brand-greenHover active:scale-[0.98] text-navy-950 font-black text-lg shadow-lg transition-all flex flex-col items-center justify-center p-4 cursor-pointer glow-effect">
+                                    <span id="crash-btn-title">ضع الرهان</span>
+                                    <span id="crash-btn-subtitle" class="text-xs font-bold opacity-80 mt-1 num-font">50.00 EGP</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="lg:col-span-4 space-y-4">
+                    <!-- Fixed Predictor Hacker Terminal -->
+                    <div class="bg-[#040810] border-2 border-brand-green/40 rounded-3xl overflow-hidden shadow-xl">
+                        <div class="bg-navy-900 border-b border-brand-green/30 px-4 py-3 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-brand-green animate-ping"></span>
+                                <h3 class="font-bold text-xs text-brand-green">كاشف الطيارة (Predictor AI)</h3>
+                            </div>
+                            <span class="text-[10px] text-brand-blue font-bold">PRO</span>
+                        </div>
+                        <div class="p-4 space-y-3">
+                            <div class="text-center py-4 bg-navy-950 rounded-2xl border border-brand-green/20">
+                                <span class="text-[11px] text-slate-400 block mb-1">نقطة الخروج المتوقعة:</span>
+                                <div id="predictor-value-box" class="text-3xl font-black text-brand-green num-font">2.45x</div>
+                            </div>
+                            <button onclick="togglePredictorReveal()" class="w-full bg-brand-green/15 hover:bg-brand-green/25 border border-brand-green/40 text-brand-green font-bold text-xs py-2.5 rounded-xl transition cursor-pointer">
+                                إخفاء / إظهار التوقع
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Live Players Online -->
+                    <div class="bg-navy-900 border border-navy-700 rounded-3xl p-4 shadow-md space-y-3">
+                        <div class="flex items-center justify-between pb-2 border-b border-navy-700">
+                            <h3 class="text-xs font-bold text-white flex items-center gap-1.5">
+                                <i class="fa-solid fa-users text-brand-blue"></i>
+                                <span>متسابقون متصلون معك الآن</span>
+                            </h3>
+                            <span class="text-[11px] text-brand-green font-bold num-font">24 نشط</span>
+                        </div>
+                        <div id="crash-players-feed" class="space-y-2 max-h-52 overflow-y-auto text-xs">
+                            <!-- Populated via JS -->
+                        </div>
+                    </div>
+                </aside>
+
+            </div>
+        </section>
+
+        <!-- ==================== TAB 1: CASINO GAMES LOUNGE ==================== -->
+        <section id="view-games" class="hidden space-y-6">
+            <div class="bg-gradient-to-l from-navy-900 via-navy-800 to-brand-gold/15 border border-brand-gold/30 rounded-3xl p-6 shadow-xl flex flex-wrap items-center justify-between gap-4">
+                <div>
+                    <div class="inline-flex items-center gap-1.5 bg-brand-gold/20 text-brand-gold text-xs font-bold px-3.5 py-1.5 rounded-full mb-2">
+                        <i class="fa-solid fa-dice"></i>
+                        <span>ألعاب الكازينو التفاعلية</span>
+                    </div>
+                    <h2 class="text-2xl font-black text-white">اختر لعبتك الحماسية المفضلة</h2>
+                    <p class="text-xs sm:text-sm text-slate-300 mt-1">ألعاب التفاح، الضفدع القافز، الصاروخ والعديد من الألعاب السريعة بمضاعفات كبرى.</p>
+                </div>
+            </div>
+
+            <!-- Games Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                
+                <div onclick="openMiniGame('apple')" class="bg-navy-900 hover:bg-navy-800 border border-navy-700 hover:border-brand-red rounded-3xl p-6 cursor-pointer transition-all duration-300 group shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="w-16 h-16 rounded-2xl bg-brand-red/15 border border-brand-red/30 text-brand-red flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                            🍎
+                        </div>
+                        <h3 class="text-lg font-extrabold text-white">التفاحة المحظوظة (Apple)</h3>
+                        <p class="text-xs text-slate-400 mt-1">اختر التفاحة السليمة في كل صف وتجنب التفاحة الفاسدة لمضاعفة أرباحك.</p>
+                    </div>
+                    <div class="mt-6 pt-3 border-t border-navy-700 flex items-center justify-between text-xs font-bold text-brand-red">
+                        <span>العب الآن</span>
+                        <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <div onclick="openMiniGame('frog')" class="bg-navy-900 hover:bg-navy-800 border border-navy-700 hover:border-brand-green rounded-3xl p-6 cursor-pointer transition-all duration-300 group shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="w-16 h-16 rounded-2xl bg-brand-green/15 border border-brand-green/30 text-brand-green flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                            🐸
+                        </div>
+                        <h3 class="text-lg font-extrabold text-white">قفز الضفدع (Frog Jump)</h3>
+                        <p class="text-xs text-slate-400 mt-1">ساعد الضفدع في القفز عبر أوراق اللوتس الآمنة وتجميع الأرباح.</p>
+                    </div>
+                    <div class="mt-6 pt-3 border-t border-navy-700 flex items-center justify-between text-xs font-bold text-brand-green">
+                        <span>العب الآن</span>
+                        <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <div onclick="openMiniGame('jetx')" class="bg-navy-900 hover:bg-navy-800 border border-navy-700 hover:border-brand-gold rounded-3xl p-6 cursor-pointer transition-all duration-300 group shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="w-16 h-16 rounded-2xl bg-brand-gold/15 border border-brand-gold/30 text-brand-gold flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-jet-fighter-up"></i>
+                        </div>
+                        <h3 class="text-lg font-extrabold text-white">صاروخ جت إكس (JetX)</h3>
+                        <p class="text-xs text-slate-400 mt-1">صاروخ نفاث يرتفع بسرعة فائقة، اسحب أرباحك في الوقت المناسب.</p>
+                    </div>
+                    <div class="mt-6 pt-3 border-t border-navy-700 flex items-center justify-between text-xs font-bold text-brand-gold">
+                        <span>العب الآن</span>
+                        <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <div onclick="openMiniGame('mines')" class="bg-navy-900 hover:bg-navy-800 border border-navy-700 hover:border-purple-500 rounded-3xl p-6 cursor-pointer transition-all duration-300 group shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="w-16 h-16 rounded-2xl bg-purple-500/15 border border-purple-500/30 text-purple-400 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-land-mine-on"></i>
+                        </div>
+                        <h3 class="text-lg font-extrabold text-white">حقل الألغام (Mines)</h3>
+                        <p class="text-xs text-slate-400 mt-1">اكشف النجوم وتجنب الألغام لمضاعفة أرباحك في كل خطوة.</p>
+                    </div>
+                    <div class="mt-6 pt-3 border-t border-navy-700 flex items-center justify-between text-xs font-bold text-purple-400">
+                        <span>العب الآن</span>
+                        <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Active Mini-Game Arena Container -->
+            <div id="minigame-arena" class="hidden bg-navy-900 border border-navy-700 rounded-3xl p-6 sm:p-8 shadow-2xl relative space-y-6">
+                <div class="flex items-center justify-between pb-4 border-b border-navy-700">
+                    <div class="flex items-center gap-3">
+                        <div id="active-minigame-icon" class="w-12 h-12 rounded-2xl bg-brand-blue/20 text-brand-blue flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-gamepad"></i>
+                        </div>
+                        <div>
+                            <h3 id="active-minigame-title" class="text-xl font-black text-white">اسم اللعبة</h3>
+                            <p id="active-minigame-desc" class="text-xs text-slate-400">وصف اللعبة التفاعلية</p>
+                        </div>
+                    </div>
+                    <button onclick="closeMiniGame()" class="bg-navy-950 hover:bg-navy-700 text-slate-300 hover:text-white px-4 py-2.5 rounded-xl text-xs font-bold transition cursor-pointer">
+                        <i class="fa-solid fa-xmark ml-1.5"></i> إغلاق اللعبة
+                    </button>
+                </div>
+
+                <div id="minigame-content-box" class="min-h-[340px] flex flex-col items-center justify-center">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 2: DEPOSIT & CASHIER ==================== -->
+        <section id="view-deposit" class="hidden space-y-6">
+            <div class="bg-gradient-to-l from-navy-900 via-navy-900 to-brand-green/15 border border-brand-green/30 rounded-3xl p-6 flex flex-wrap items-center justify-between gap-4 shadow-xl">
+                <div class="space-y-1.5">
+                    <div class="inline-flex items-center gap-1.5 bg-brand-green/20 text-brand-green text-xs font-bold px-3.5 py-1.5 rounded-full">
+                        <i class="fa-solid fa-shield-check"></i>
+                        <span>بوابة الشحن المعتمدة (قاعدة بيانات سحابية)</span>
+                    </div>
+                    <h2 class="text-2xl font-black text-white">الإيداع الفوري وشحن الرصيد (Deposit)</h2>
+                    <p class="text-xs sm:text-sm text-slate-300">حول إلى المحفظة الرسمية أدناه وأرسل الطلب ليتم حفظه في قاعدة البيانات واعتماده فوراً.</p>
+                </div>
+                <div class="bg-navy-950 border border-navy-700 rounded-2xl px-5 py-3.5 text-center">
+                    <span class="block text-[11px] text-slate-400">حالة الشحن</span>
+                    <span class="text-lg font-black text-brand-green">متاح 24/7</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                <div class="lg:col-span-7 bg-navy-900 border border-navy-700 rounded-3xl p-6 shadow-xl space-y-6">
+                    <div class="space-y-3">
+                        <span class="text-xs font-bold text-brand-blue">الخطوة 1: التحويل إلى المحفظة الرسمية</span>
+                        <div class="bg-navy-950 border-2 border-brand-blue/40 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <div>
+                                <span class="block text-xs text-slate-400">رقم المحفظة المعتمد للتحويل:</span>
+                                <span class="text-2xl sm:text-3xl font-black text-white tracking-wider num-font select-all">01050162971</span>
+                            </div>
+                            <button type="button" onclick="copyDepositNumber()" class="bg-brand-blue hover:bg-brand-blueHover text-white font-bold text-xs px-4 py-3 rounded-xl transition flex items-center gap-2 cursor-pointer">
+                                <i class="fa-regular fa-copy"></i>
+                                <span>نسخ الرقم</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <form onsubmit="submitDepositRequest(event)" class="space-y-4 pt-4 border-t border-navy-700">
+                        <span class="block text-xs font-bold text-brand-blue">الخطوة 2: تفاصيل إيصال التحويل</span>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-300 mb-1.5">المبلغ المحوّل (<span class="currency-unit num-font">EGP</span>):</label>
+                                <input type="text" id="deposit-amount-input" value="200" required
+                                    class="w-full bg-navy-950 border border-navy-700 focus:border-brand-green focus:outline-none rounded-xl px-4 py-3 text-white font-black text-lg num-font">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-300 mb-1.5">رقم هاتفك المحوّل منه:</label>
+                                <input type="text" id="deposit-sender-phone" required placeholder="010xxxxxxxx"
+                                    class="w-full bg-navy-950 border border-navy-700 focus:border-brand-blue focus:outline-none rounded-xl px-4 py-3 text-white text-sm num-font">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-brand-green hover:bg-brand-greenHover text-navy-950 font-black py-4 rounded-xl shadow-lg transition-all cursor-pointer text-base">
+                            إرسال طلب الإيداع السحابي
+                        </button>
+                    </form>
+                </div>
+
+                <div class="lg:col-span-5 bg-navy-900 border border-navy-700 rounded-3xl p-6 shadow-xl space-y-4">
+                    <h3 class="font-bold text-base text-white flex items-center gap-2">
+                        <i class="fa-solid fa-clock-rotate-left text-brand-gold"></i>
+                        <span>قائمة طلبات الإيداع السحابية</span>
+                    </h3>
+                    <div id="deposit-requests-list" class="space-y-3.5 max-h-[450px] overflow-y-auto">
+                        <!-- Populated via Firestore -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: WITHDRAWAL VIEW ==================== -->
+        <section id="view-withdraw" class="hidden space-y-6">
+            <div class="bg-gradient-to-l from-navy-900 via-navy-900 to-brand-gold/15 border border-brand-gold/30 rounded-3xl p-6 flex flex-wrap items-center justify-between gap-4 shadow-xl">
+                <div class="space-y-1.5">
+                    <div class="inline-flex items-center gap-1.5 bg-brand-gold/20 text-brand-gold text-xs font-bold px-3.5 py-1.5 rounded-full">
+                        <i class="fa-solid fa-money-bill-transfer"></i>
+                        <span>سحب الأرباح الآمن</span>
+                    </div>
+                    <h2 class="text-2xl font-black text-white">سحب رصيدك السحابي (Withdraw)</h2>
+                    <p class="text-xs sm:text-sm text-slate-300">أدخل رقم محفظتك والمبلغ المراد سحبه لمعالجة العملية فوراً عبر قاعدة البيانات.</p>
+                </div>
+                <div class="bg-navy-950 border border-navy-700 rounded-2xl px-5 py-3.5 text-center">
+                    <span class="block text-[11px] text-slate-400">الرصيد القابل للسحب</span>
+                    <span id="withdraw-available-balance" class="text-lg font-black text-brand-green num-font">0.00 EGP</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                <div class="lg:col-span-6 bg-navy-900 border border-navy-700 rounded-3xl p-6 shadow-xl space-y-5">
+                    <h3 class="text-base font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-wallet text-brand-blue"></i>
+                        <span>طلب سحب جديد</span>
+                    </h3>
+                    <form onsubmit="submitWithdrawal(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 mb-1.5">المبلغ (<span class="currency-unit num-font">EGP</span>):</label>
+                            <input type="text" id="withdraw-amount-input" required placeholder="مثال: 500"
+                                class="w-full bg-navy-950 border border-navy-700 focus:border-brand-blue focus:outline-none rounded-xl px-4 py-3 text-white font-black text-lg num-font">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 mb-1.5">رقم المحفظة (فودافون كاش / إنستا باي):</label>
+                            <input type="text" id="withdraw-phone-input" required placeholder="010xxxxxxxx"
+                                class="w-full bg-navy-950 border border-navy-700 focus:border-brand-blue focus:outline-none rounded-xl px-4 py-3 text-white text-sm num-font">
+                        </div>
+                        <button type="submit" class="w-full bg-brand-gold hover:bg-amber-500 text-navy-950 font-black py-4 rounded-xl shadow-lg transition-all cursor-pointer text-base">
+                            تأكيد طلب السحب السحابي
+                        </button>
+                    </form>
+                </div>
+
+                <div class="lg:col-span-6 bg-navy-900 border border-navy-700 rounded-3xl p-6 shadow-xl space-y-4">
+                    <h3 class="text-base font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-clock-rotate-left text-brand-blue"></i>
+                        <span>سجل طلبات السحب</span>
+                    </h3>
+                    <div id="withdrawals-list" class="space-y-3 max-h-[380px] overflow-y-auto">
+                        <!-- Populated via Firestore -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 4: REVIEWS & RATINGS VIEW ==================== -->
+        <section id="view-reviews" class="hidden space-y-6">
+            <div class="bg-navy-900 border border-navy-700 rounded-3xl p-6 flex flex-wrap items-center justify-between gap-4 shadow-xl">
+                <div>
+                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-star text-amber-400"></i>
+                        <span>مراجعات وتقييمات العملاء لـ 1xBet Pro</span>
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-400 mt-1">آراء حقيقية من لاعبين مستمتعين بالمصداقية والألعاب السريعة.</p>
+                </div>
+                <div class="bg-navy-950 border border-navy-700 px-5 py-3 rounded-2xl text-center">
+                    <span class="block text-xs text-slate-400">التقييم العام</span>
+                    <span class="text-xl font-black text-amber-400 num-font">4.9 / 5.0 ⭐</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                <div class="lg:col-span-5 bg-navy-900 border border-navy-700 rounded-3xl p-6 shadow-xl space-y-4">
+                    <h3 class="font-bold text-sm text-white">أضف تقييمك ورأيك في المنصة</h3>
+                    <form onsubmit="submitReview(event)" class="space-y-3">
+                        <div>
+                            <label class="block text-xs text-slate-300 mb-1">اسمك:</label>
+                            <input type="text" id="review-name" required placeholder="اسمك الكريم"
+                                class="w-full bg-navy-950 border border-navy-700 rounded-xl px-3.5 py-2.5 text-xs text-white">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-300 mb-1">تقييمك بالنجوم:</label>
+                            <select id="review-stars" class="w-full bg-navy-950 border border-navy-700 rounded-xl px-3 py-2.5 text-xs text-white font-bold">
+                                <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ (ممتاز جداً)</option>
+                                <option value="⭐⭐⭐⭐">⭐⭐⭐⭐ (رائع)</option>
+                                <option value="⭐⭐⭐">⭐⭐⭐ (جيد)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-300 mb-1">رسالتك أو تعليقك:</label>
+                            <textarea id="review-text" required rows="3" placeholder="اكتب تجربتك مع الألعاب والسحب..."
+                                class="w-full bg-navy-950 border border-navy-700 rounded-xl p-3 text-xs text-white focus:outline-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-brand-blue hover:bg-brand-blueHover text-white font-bold py-3 rounded-xl transition text-xs cursor-pointer">
+                            نشر التقييم السحابي
+                        </button>
+                    </form>
+                </div>
+
+                <div class="lg:col-span-7 bg-navy-900 border border-navy-700 rounded-3xl p-6 shadow-xl space-y-4">
+                    <h3 class="font-bold text-sm text-white">آراء العملاء السابقين</h3>
+                    <div id="reviews-container" class="space-y-3 max-h-[420px] overflow-y-auto">
+                        <!-- Populated via Firestore -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 5: SETTINGS & CUSTOMIZATION ==================== -->
+        <section id="view-settings" class="hidden space-y-6">
+            <div class="bg-navy-900 border border-navy-700 rounded-3xl p-6 shadow-xl space-y-6">
+                <div>
+                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-gear text-slate-300"></i>
+                        <span>إعدادات الحساب وتخصيص المنصة (Settings)</span>
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-400 mt-1">تغيير بيانات حسابك السحابي، رمز الأمان (PIN)، أو خلفية المنصة.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-navy-700">
+                    <div class="space-y-4 bg-navy-950 p-5 rounded-2xl border border-navy-700">
+                        <h3 class="font-bold text-sm text-white">تحديث بيانات الحساب</h3>
+                        <div>
+                            <label class="block text-xs text-slate-300 mb-1">اسم المستخدم الجديد:</label>
+                            <input type="text" id="settings-username" class="w-full bg-navy-900 border border-navy-700 rounded-xl px-3.5 py-2.5 text-xs text-white">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-300 mb-1">رمز الأمان السري (PIN):</label>
+                            <input type="password" id="settings-pin" placeholder="مثال: 4 أرقام سرية" class="w-full bg-navy-900 border border-navy-700 rounded-xl px-3.5 py-2.5 text-xs text-white num-font">
+                        </div>
+                        <button onclick="saveAccountSettings()" class="bg-brand-blue hover:bg-brand-blueHover text-white font-bold py-2.5 px-5 rounded-xl text-xs transition cursor-pointer">
+                            حفظ التعديلات في السحابة
+                        </button>
+                    </div>
+
+                    <div class="space-y-4 bg-navy-950 p-5 rounded-2xl border border-navy-700">
+                        <h3 class="font-bold text-sm text-white">تخصيص لون وخلفية المنصة</h3>
+                        <p class="text-xs text-slate-400">اختر الثوب البصري المفضل لبيئة اللعب:</p>
+                        <div class="grid grid-cols-3 gap-3">
+                            <button onclick="changeAppTheme('#040810', '#08101e')" class="p-3 rounded-xl bg-[#040810] border-2 border-brand-blue text-xs font-bold text-center cursor-pointer">داكن كلاسيكي</button>
+                            <button onclick="changeAppTheme('#0f051d', '#1a0b2e')" class="p-3 rounded-xl bg-[#0f051d] border-2 border-brand-purple text-xs font-bold text-center cursor-pointer">أرجواني ليلي</button>
+                            <button onclick="changeAppTheme('#051d14', '#0a2e20')" class="p-3 rounded-xl bg-[#051d14] border-2 border-brand-green text-xs font-bold text-center cursor-pointer">أخضر كازينو</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-950 border-t border-navy-800/80 py-6 px-4 mt-12">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+            <div class="flex items-center gap-2">
+                <span class="font-black text-white num-font">1xBet Pro</span>
+                <span>• قاعدة بيانات سحابية آمنة وحقيقية.</span>
+            </div>
+            <p class="text-slate-500">جميع العمليات مربوطة بـ Firestore Database.</p>
+        </div>
+    </footer>
+
+    <!-- Firebase SDKs and App Logic -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc, onSnapshot, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : { apiKey: "demo", projectId: "demo" };
+
+        let app, db, auth;
+        try {
+            app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            auth = getAuth(app);
+        } catch (e) {
+            console.error("Firebase init error:", e);
+        }
+
+        let currentUser = null;
+        let dbUnsubscribes = [];
+
+        window.state = {
+            user: { name: 'زائر', contact: '', currency: 'EGP', id: '1x-99281' },
+            balance: 0.00,
+            activeTab: 'crash'
+        };
+
+        // Initialize Auth and Database Connection
+        window.addEventListener('DOMContentLoaded', async () => {
+            let step = 1;
+            const interval = setInterval(() => {
+                if (step <= 5) {
+                    const dot = document.getElementById(`dot-${step}`);
+                    if (dot) {
+                        dot.style.backgroundColor = '#00d26a';
+                        dot.style.transform = 'scale(1.3)';
+                    }
+                    step++;
+                } else {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        const splash = document.getElementById('splash-screen');
+                        if (splash) {
+                            splash.style.opacity = '0';
+                            setTimeout(() => {
+                                splash.classList.add('hidden');
+                                const authScr = document.getElementById('auth-screen');
+                                if (authScr) authScr.classList.remove('hidden');
+                            }, 500);
+                        }
+                    }, 400);
+                }
+            }, 300);
+
+            try {
+                if (auth) {
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                }
+            } catch (err) {
+                console.error("Auth error:", err);
+            }
+
+            resizeCrashCanvas();
+            initCrashRound();
+            requestAnimationFrame(gameLoop);
+        });
+
+        if (auth) {
+            onAuthStateChanged(auth, async (user) => {
+                if (!user) return;
+                currentUser = user;
+                const userId = user.uid;
+                
+                try {
+                    const userDocRef = doc(db, 'artifacts', appId, 'users', userId, 'profile', 'data');
+                    const snap = await getDoc(userDocRef);
+                    if (snap.exists()) {
+                        const data = snap.data();
+                        window.state.user = data.user;
+                        window.state.balance = data.balance || 0;
+                        applyUserSessionUI();
+                        const authScr = document.getElementById('auth-screen');
+                        if (authScr) authScr.classList.add('hidden');
+                        showToast('تم استرجاع حسابك السحابي بنجاح!', 'success');
+                    }
+                    setupFirestoreListeners(userId);
+                } catch (e) {
+                    console.error("Firestore fetch error:", e);
+                }
+            });
+        }
+
+        async function saveUserDataToFirestore() {
+            if (!currentUser || !db) return;
+            try {
+                const userId = currentUser.uid;
+                const userDocRef = doc(db, 'artifacts', appId, 'users', userId, 'profile', 'data');
+                await setDoc(userDocRef, {
+                    user: window.state.user,
+                    balance: window.state.balance,
+                    updatedAt: new Date().toISOString()
+                }, { merge: true });
+            } catch (e) {
+                console.error("Save error:", e);
+            }
+        }
+
+        function setupFirestoreListeners(userId) {
+            try {
+                const depCol = collection(db, 'artifacts', appId, 'users', userId, 'deposits');
+                const unsubDep = onSnapshot(depCol, (snapshot) => {
+                    const list = [];
+                    snapshot.forEach(docSnap => list.push({ id: docSnap.id, ...docSnap.data() }));
+                    renderDepositRequests(list);
+                }, (err) => console.error(err));
+                dbUnsubscribes.push(unsubDep);
+
+                const wthCol = collection(db, 'artifacts', appId, 'users', userId, 'withdrawals');
+                const unsubWth = onSnapshot(wthCol, (snapshot) => {
+                    const list = [];
+                    snapshot.forEach(docSnap => list.push({ id: docSnap.id, ...docSnap.data() }));
+                    renderWithdrawals(list);
+                }, (err) => console.error(err));
+                dbUnsubscribes.push(unsubWth);
+
+                const revCol = collection(db, 'artifacts', appId, 'public', 'data', 'reviews');
+                const unsubRev = onSnapshot(revCol, (snapshot) => {
+                    const list = [];
+                    snapshot.forEach(docSnap => list.push(docSnap.data()));
+                    if (list.length > 0) renderReviews(list);
+                }, (err) => console.error(err));
+                dbUnsubscribes.push(unsubRev);
+            } catch (e) {
+                console.error("Listener error:", e);
+            }
+        }
+
+        // Auth Form Handlers
+        window.switchAuthTab = function(tab) {
+            const regBtn = document.getElementById('auth-tab-register');
+            const loginBtn = document.getElementById('auth-tab-login');
+            const regPanel = document.getElementById('auth-panel-register');
+            const loginPanel = document.getElementById('auth-panel-login');
+
+            if (tab === 'register') {
+                regBtn.className = 'py-2.5 rounded-xl text-xs font-bold transition-all bg-brand-blue text-white shadow cursor-pointer';
+                loginBtn.className = 'py-2.5 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white cursor-pointer';
+                regPanel.classList.remove('hidden');
+                loginPanel.classList.add('hidden');
+            } else {
+                loginBtn.className = 'py-2.5 rounded-xl text-xs font-bold transition-all bg-brand-blue text-white shadow cursor-pointer';
+                regBtn.className = 'py-2.5 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white cursor-pointer';
+                loginPanel.classList.remove('hidden');
+                regPanel.classList.add('hidden');
+            }
+        };
+
+        window.handleRegisterSubmit = async function(e) {
+            e.preventDefault();
+            const username = document.getElementById('reg-username').value.trim();
+            const contact = document.getElementById('reg-contact').value.trim();
+            const currency = document.getElementById('reg-currency').value;
+
+            window.state.user = {
+                name: username || 'لاعب 1x',
+                contact: contact || '01000000000',
+                currency: currency,
+                id: '1x-' + Math.floor(100000 + Math.random() * 900000)
+            };
+            window.state.balance = 0.00;
+
+            await saveUserDataToFirestore();
+            applyUserSessionUI();
+            const authScr = document.getElementById('auth-screen');
+            if (authScr) authScr.classList.add('hidden');
+            showToast(`أهلاً بك يا ${window.state.user.name}! تم إنشاء حسابك السحابي بنجاح.`, 'success');
+        };
+
+        window.handleLoginSubmit = async function(e) {
+            e.preventDefault();
+            const contact = document.getElementById('login-contact').value.trim();
+            if (contact) window.state.user.contact = contact;
+            await saveUserDataToFirestore();
+            applyUserSessionUI();
+            const authScr = document.getElementById('auth-screen');
+            if (authScr) authScr.classList.add('hidden');
+            showToast('تم تسجيل الدخول واسترجاع بياناتك بنجاح.', 'success');
+        };
+
+        function applyUserSessionUI() {
+            const nameDisp = document.getElementById('header-username-display');
+            if (nameDisp) nameDisp.textContent = `${window.state.user.name} • ${window.state.user.id || 'VIP'}`;
+            document.querySelectorAll('.currency-unit').forEach(el => el.textContent = window.state.user.currency);
+            const curLbl = document.getElementById('wallet-currency-label');
+            if (curLbl) curLbl.textContent = window.state.user.currency;
+            updateWalletUI();
+        }
+
+        window.updateWalletUI = function() {
+            const wal = document.getElementById('wallet-balance');
+            if (wal) wal.textContent = window.state.balance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            saveUserDataToFirestore();
+        };
+
+        window.switchTab = function(tabName) {
+            window.state.activeTab = tabName;
+            ['crash', 'games', 'deposit', 'withdraw', 'reviews', 'settings'].forEach(t => {
+                const view = document.getElementById(`view-${t}`);
+                const btn = document.getElementById(`nav-${t}`);
+                if (view) view.classList.add('hidden');
+                if (btn) {
+                    btn.classList.remove('bg-brand-blue', 'text-white', 'shadow');
+                    btn.classList.add('text-slate-300', 'hover:text-white');
+                }
+            });
+
+            const targetView = document.getElementById(`view-${tabName}`);
+            if (targetView) targetView.classList.remove('hidden');
+            const activeBtn = document.getElementById(`nav-${tabName}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-slate-300', 'hover:text-white');
+                activeBtn.classList.add('bg-brand-blue', 'text-white', 'shadow');
+            }
+
+            if (tabName === 'crash') resizeCrashCanvas();
+            if (tabName === 'withdraw') {
+                const wBal = document.getElementById('withdraw-available-balance');
+                if (wBal) wBal.textContent = `${window.state.balance.toFixed(2)} ${window.state.user.currency}`;
+            }
+        };
+
+        window.showToast = function(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+            const toast = document.createElement('div');
+            const colors = {
+                success: 'bg-navy-900 border-brand-green text-white',
+                error: 'bg-navy-900 border-red-500 text-white',
+                info: 'bg-navy-900 border-brand-blue text-white'
+            };
+            const icons = {
+                success: '<i class="fa-solid fa-circle-check text-brand-green text-lg"></i>',
+                error: '<i class="fa-solid fa-circle-exclamation text-red-500 text-lg"></i>',
+                info: '<i class="fa-solid fa-circle-info text-brand-blue text-lg"></i>'
+            };
+            toast.className = `pointer-events-auto flex items-center gap-3 p-4 rounded-2xl border-r-4 shadow-2xl transition-all duration-300 ${colors[type]}`;
+            toast.innerHTML = `${icons[type]}<p class="text-xs sm:text-sm font-semibold">${message}</p>`;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 3500);
+        };
+
+        window.copyDepositNumber = function() {
+            navigator.clipboard.writeText('01050162971');
+            showToast('تم نسخ رقم المحفظة (01050162971) بنجاح!', 'success');
+        };
+
+        window.submitDepositRequest = async function(e) {
+            e.preventDefault();
+            if (!currentUser || !db) return;
+            const amountVal = document.getElementById('deposit-amount-input').value;
+            const amount = parseFloat(amountVal) || 200;
+            const phone = document.getElementById('deposit-sender-phone').value.trim();
+
+            window.state.balance += amount;
+            updateWalletUI();
+
+            try {
+                const depCol = collection(db, 'artifacts', appId, 'users', currentUser.uid, 'deposits');
+                await addDoc(depCol, {
+                    amount: amount,
+                    phone: phone,
+                    status: 'تمت الإضافة السحابية الفورية',
+                    createdAt: new Date().toISOString()
+                });
+            } catch (e) {
+                console.error(e);
+            }
+
+            showToast(`تم إيداع مبلغ ${amount} ${window.state.user.currency} وتحديث الرصيد!`, 'success');
+        };
+
+        function renderDepositRequests(list) {
+            const container = document.getElementById('deposit-requests-list');
+            if (!container) return;
+            if (list.length === 0) {
+                container.innerHTML = `<div class="text-center py-6 text-slate-500 text-xs">لا توجد طلبات إيداع سحابية</div>`;
+                return;
+            }
+            container.innerHTML = list.map(d => `
+                <div class="bg-navy-950 border border-navy-700 rounded-2xl p-3 flex items-center justify-between text-xs">
+                    <div>
+                        <span class="font-bold text-white num-font">${d.amount} ${window.state.user.currency}</span>
+                        <span class="block text-[11px] text-slate-400">هاتف: ${d.phone}</span>
+                    </div>
+                    <span class="text-brand-green font-bold">${d.status}</span>
+                </div>
+            `).join('');
+        }
+
+        window.submitWithdrawal = async function(e) {
+            e.preventDefault();
+            if (!currentUser || !db) return;
+            const amountVal = document.getElementById('withdraw-amount-input').value;
+            const amount = parseFloat(amountVal) || 100;
+            const phone = document.getElementById('withdraw-phone-input').value.trim();
+
+            if (amount > window.state.balance) {
+                showToast('عذراً، رصيدك السحابي المتاح غير كافٍ.', 'error');
+                return;
+            }
+
+            window.state.balance -= amount;
+            updateWalletUI();
+
+            try {
+                const wthCol = collection(db, 'artifacts', appId, 'users', currentUser.uid, 'withdrawals');
+                await addDoc(wthCol, {
+                    amount: amount,
+                    phone: phone,
+                    status: 'تم التحويل بنجاح',
+                    createdAt: new Date().toISOString()
+                });
+            } catch (e) {
+                console.error(e);
+            }
+
+            showToast(`تم سحب ${amount} ${window.state.user.currency} بنجاح!`, 'success');
+        };
+
+        function renderWithdrawals(list) {
+            const container = document.getElementById('withdrawals-list');
+            if (!container) return;
+            if (list.length === 0) {
+                container.innerHTML = `<div class="text-center py-6 text-slate-500 text-xs">لا توجد عمليات سحب سابقة</div>`;
+                return;
+            }
+            container.innerHTML = list.map(w => `
+                <div class="bg-navy-950 border border-navy-700 rounded-2xl p-3 flex items-center justify-between text-xs">
+                    <div>
+                        <span class="font-bold text-white num-font">${w.amount} ${window.state.user.currency}</span>
+                        <span class="block text-[11px] text-slate-400">${w.phone}</span>
+                    </div>
+                    <span class="text-brand-green font-bold">${w.status}</span>
+                </div>
+            `).join('');
+        }
+
+        window.openMiniGame = function(key) {
+            const arena = document.getElementById('minigame-arena');
+            const title = document.getElementById('active-minigame-title');
+            const desc = document.getElementById('active-minigame-desc');
+            const icon = document.getElementById('active-minigame-icon');
+            const box = document.getElementById('minigame-content-box');
+
+            if (!arena) return;
+            arena.classList.remove('hidden');
+            arena.scrollIntoView({ behavior: 'smooth' });
+
+            if (key === 'apple') {
+                title.textContent = 'التفاحة المحظوظة (Apple of Fortune)';
+                desc.textContent = 'اختر التفاحة السليمة في كل صف لتتجاوز الفاسدة وتضاعف ربحك.';
+                icon.innerHTML = '🍎';
+                initAppleGame(box);
+            } else if (key === 'frog') {
+                title.textContent = 'قفز الضفدع (Frogger Jump)';
+                desc.textContent = 'ساعد الضفدع في القفز فوق أوراق اللوتس الآمنة وتجنب التمساح.';
+                icon.innerHTML = '🐸';
+                initFrogGame(box);
+            } else if (key === 'jetx') {
+                title.textContent = 'صاروخ جت إكس (JetX)';
+                desc.textContent = 'أدخل الرهان وأطلق الصاروخ.';
+                icon.innerHTML = '<i class="fa-solid fa-jet-fighter-up text-brand-gold"></i>';
+                box.innerHTML = `
+                    <div class="text-center space-y-4">
+                        <div class="text-5xl font-black text-brand-gold num-font">🚀 JET-X 🚀</div>
+                        <input type="text" id="jet-stake" value="50" class="w-48 bg-navy-950 border border-navy-700 rounded-xl py-3 text-center text-white font-black num-font mx-auto block">
+                        <button onclick="playJetXMini()" class="bg-brand-gold text-navy-950 font-black px-8 py-3.5 rounded-xl cursor-pointer">انطلاق الصاروخ</button>
+                    </div>
+                `;
+            } else if (key === 'mines') {
+                title.textContent = 'حقل الألغام (Mines)';
+                desc.textContent = 'اكشف النجوم وتجنب الألغام.';
+                icon.innerHTML = '<i class="fa-solid fa-land-mine-on text-purple-400"></i>';
+                box.innerHTML = `
+                    <div class="text-center space-y-4">
+                        <div class="grid grid-cols-4 gap-2 max-w-xs mx-auto">
+                            ${Array.from({length:8}, (_,i)=>`<button onclick="clickMineCell(${i})" id="mine-${i}" class="h-12 bg-navy-950 border border-navy-700 rounded-xl font-bold text-lg">⭐</button>`).join('')}
+                        </div>
+                        <p class="text-xs text-slate-400">اضغط على الخلايا بحذر لتجميع الأرباح</p>
+                    </div>
+                `;
+            }
+        };
+
+        window.closeMiniGame = function() {
+            const arena = document.getElementById('minigame-arena');
+            if (arena) arena.classList.add('hidden');
+        };
+
+        let appleRow = 0;
+        function initAppleGame(box) {
+            appleRow = 0;
+            box.innerHTML = `
+                <div class="w-full max-w-md space-y-4 text-center">
+                    <p class="text-xs text-brand-green font-bold">الصف الحالي: <span id="apple-row-num">1</span> / 4</p>
+                    <div class="grid grid-cols-3 gap-3 bg-navy-950 p-4 rounded-2xl border border-navy-700">
+                        <button onclick="pickApple(0)" class="h-16 bg-navy-900 hover:bg-navy-700 border border-navy-700 rounded-xl text-3xl transition cursor-pointer">🍎</button>
+                        <button onclick="pickApple(1)" class="h-16 bg-navy-900 hover:bg-navy-700 border border-navy-700 rounded-xl text-3xl transition cursor-pointer">🍎</button>
+                        <button onclick="pickApple(2)" class="h-16 bg-navy-900 hover:bg-navy-700 border border-navy-700 rounded-xl text-3xl transition cursor-pointer">🍎</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        window.pickApple = function(idx) {
+            const bad = Math.floor(Math.random() * 3);
+            if (idx === bad) {
+                showToast('أكلت تفاحة فاسدة! خسرت الجولة.', 'error');
+                initAppleGame(document.getElementById('minigame-content-box'));
+            } else {
+                appleRow++;
+                if (appleRow >= 4) {
+                    window.state.balance += 250;
+                    updateWalletUI();
+                    showToast('مبروك! اجتزت جميع صفوف التفاح وربحت 250.00 EGP!', 'success');
+                    initAppleGame(document.getElementById('minigame-content-box'));
+                } else {
+                    const rowNum = document.getElementById('apple-row-num');
+                    if (rowNum) rowNum.textContent = appleRow + 1;
+                    showToast('تفاحة سليمة! انتقل للصف التالي.', 'success');
+                }
+            }
+        };
+
+        let frogStep = 0;
+        function initFrogGame(box) {
+            frogStep = 0;
+            box.innerHTML = `
+                <div class="w-full max-w-md space-y-4 text-center">
+                    <div class="text-4xl mb-2" id="frog-icon">🐸</div>
+                    <p class="text-xs text-slate-300">الخطوة الحالية: <span id="frog-step-num">1</span> / 5</p>
+                    <button onclick="jumpFrog()" class="w-full bg-brand-green hover:bg-brand-greenHover text-navy-950 font-black py-3.5 rounded-xl cursor-pointer">
+                        قفز إلى ورقة اللوتس التالية 🌿
+                    </button>
+                </div>
+            `;
+        }
+
+        window.jumpFrog = function() {
+            const success = Math.random() > 0.3;
+            if (!success) {
+                const fIcon = document.getElementById('frog-icon');
+                if (fIcon) fIcon.textContent = '🐊';
+                showToast('قابل الضفدع تمساحاً! خسرت المحاولة.', 'error');
+                setTimeout(() => initFrogGame(document.getElementById('minigame-content-box')), 1000);
+            } else {
+                frogStep++;
+                if (frogStep >= 5) {
+                    window.state.balance += 400;
+                    updateWalletUI();
+                    showToast('وصل الضفدع للبر الأمان وربحت 400.00 EGP!', 'success');
+                    initFrogGame(document.getElementById('minigame-content-box'));
+                } else {
+                    const sNum = document.getElementById('frog-step-num');
+                    if (sNum) sNum.textContent = frogStep + 1;
+                    showToast('قفزة ناجحة وموفقة!', 'success');
+                }
+            }
+        };
+
+        window.playJetXMini = function() {
+            const win = 180.00;
+            window.state.balance += win;
+            updateWalletUI();
+            showToast(`أطلق الصاروخ بنجاح وربحت ${win} ${window.state.user.currency}!`, 'success');
+        };
+
+        window.clickMineCell = function(i) {
+            const btn = document.getElementById(`mine-${i}`);
+            if (btn) {
+                btn.textContent = '💎';
+                btn.className = 'h-12 bg-brand-green/20 border border-brand-green rounded-xl font-bold text-lg';
+            }
+            showToast('وجدت جوهرة ثمينة!', 'success');
+        };
+
+        window.submitReview = async function(e) {
+            e.preventDefault();
+            if (!db) return;
+            const name = document.getElementById('review-name').value.trim();
+            const stars = document.getElementById('review-stars').value;
+            const text = document.getElementById('review-text').value.trim();
+
+            try {
+                const revCol = collection(db, 'artifacts', appId, 'public', 'data', 'reviews');
+                await addDoc(revCol, { name, stars, text, createdAt: new Date().toISOString() });
+            } catch (e) {
+                console.error(e);
+            }
+
+            document.getElementById('review-name').value = '';
+            document.getElementById('review-text').value = '';
+            showToast('شكراً لك! تم نشر تقييمك سحابياً بنجاح.', 'success');
+        };
+
+        function renderReviews(list) {
+            const container = document.getElementById('reviews-container');
+            if (!container) return;
+            container.innerHTML = list.map(r => `
+                <div class="bg-navy-950 border border-navy-700 rounded-2xl p-4 space-y-1.5 text-xs">
+                    <div class="flex items-center justify-between">
+                        <span class="font-bold text-white">${r.name}</span>
+                        <span class="text-amber-400">${r.stars}</span>
+                    </div>
+                    <p class="text-slate-300">${r.text}</p>
+                </div>
+            `).join('');
+        }
+
+        window.saveAccountSettings = async function() {
+            const newName = document.getElementById('settings-username').value.trim();
+            if (newName) {
+                window.state.user.name = newName;
+                applyUserSessionUI();
+            }
+            await saveUserDataToFirestore();
+            showToast('تم حفظ إعدادات الحساب ورمز الأمان في السحابة بنجاح!', 'success');
+        };
+
+        window.changeAppTheme = function(c1, c2) {
+            document.body.style.backgroundColor = c1;
+            showToast('تم تغيير مظهر خلفية المنصة بنجاح.', 'success');
+        };
+
+        // Crash Game Engine
+        const crashGame = {
+            phase: 'waiting',
+            multiplier: 1.00,
+            targetCrashPoint: 2.15,
+            waitTimeTotal: 4000,
+            waitTimeLeft: 4000,
+            flightStartTime: 0,
+            lastFrameTime: 0,
+            hasPlacedBet: false,
+            currentBetAmount: 0,
+            hasCashedOut: false,
+            history: [1.45, 3.20, 1.10, 5.80, 2.15],
+            predictorRevealed: true,
+            simPlayers: []
+        };
+
+        const botNames = ['كابتن_أحمد', 'ياسر_برو', 'محمود_VIP', 'عمرو_كاش', 'إسلام_جيمنج', 'سارة_لاكي'];
+
+        function generateCrashPoint() {
+            const r = Math.random();
+            if (r < 0.1) return parseFloat((1.00 + Math.random() * 0.15).toFixed(2));
+            if (r < 0.7) return parseFloat((1.20 + Math.random() * 3.00).toFixed(2));
+            return parseFloat((4.50 + Math.random() * 12.00).toFixed(2));
+        }
+
+        function initCrashRound() {
+            crashGame.phase = 'waiting';
+            crashGame.multiplier = 1.00;
+            crashGame.targetCrashPoint = generateCrashPoint();
+            crashGame.waitTimeLeft = crashGame.waitTimeTotal;
+            crashGame.hasCashedOut = false;
+
+            crashGame.simPlayers = Array.from({ length: 5 }, () => ({
+                name: botNames[Math.floor(Math.random() * botNames.length)],
+                bet: [50, 100, 250, 500][Math.floor(Math.random() * 4)]
+            }));
+
+            const wEl = document.getElementById('crash-hud-waiting');
+            const aEl = document.getElementById('crash-hud-active');
+            const sLab = document.getElementById('crash-status-label');
+            const wBan = document.getElementById('crash-live-win-banner');
+            const mDisp = document.getElementById('crash-multiplier-display');
+
+            if (wEl) wEl.classList.remove('hidden');
+            if (aEl) aEl.classList.add('hidden');
+            if (sLab) sLab.classList.add('hidden');
+            if (wBan) wBan.classList.add('hidden');
+            if (mDisp) {
+                mDisp.classList.remove('text-red-500');
+                mDisp.classList.add('text-white');
+            }
+
+            const predBox = document.getElementById('predictor-value-box');
+            if (predBox) predBox.textContent = crashGame.predictorRevealed ? `${crashGame.targetCrashPoint.toFixed(2)}x` : '**.**x';
+
+            renderSimPlayers();
+            updateCrashActionButton();
+        }
+
+        function startFlightPhase() {
+            crashGame.phase = 'flying';
+            crashGame.flightStartTime = performance.now();
+            const wEl = document.getElementById('crash-hud-waiting');
+            const aEl = document.getElementById('crash-hud-active');
+            if (wEl) wEl.classList.add('hidden');
+            if (aEl) aEl.classList.remove('hidden');
+            updateCrashActionButton();
+        }
+
+        function triggerCrashPhase() {
+            crashGame.phase = 'crashed';
+            crashGame.multiplier = crashGame.targetCrashPoint;
+            crashGame.history.unshift(crashGame.targetCrashPoint);
+            if (crashGame.history.length > 8) crashGame.history.pop();
+            renderCrashHistory();
+
+            const multEl = document.getElementById('crash-multiplier-display');
+            if (multEl) {
+                multEl.textContent = `${crashGame.targetCrashPoint.toFixed(2)}x`;
+                multEl.classList.remove('text-white');
+                multEl.classList.add('text-red-500');
+            }
+            const sLab = document.getElementById('crash-status-label');
+            if (sLab) sLab.classList.remove('hidden');
+
+            if (crashGame.hasPlacedBet && !crashGame.hasCashedOut) {
+                showToast(`تحطمت الطائرة عند ${crashGame.targetCrashPoint.toFixed(2)}x! خسرت الرهان.`, 'error');
+            }
+
+            updateCrashActionButton();
+            setTimeout(initCrashRound, 3000);
+        }
+
+        function cashOutCrashBet() {
+            if (crashGame.phase !== 'flying' || !crashGame.hasPlacedBet || crashGame.hasCashedOut) return;
+            crashGame.hasCashedOut = true;
+            const payout = parseFloat((crashGame.currentBetAmount * crashGame.multiplier).toFixed(2));
+            window.state.balance += payout;
+            updateWalletUI();
+
+            const wAmt = document.getElementById('crash-won-amount');
+            if (wAmt) wAmt.textContent = payout.toFixed(2);
+            const wBan = document.getElementById('crash-live-win-banner');
+            if (wBan) wBan.classList.remove('hidden');
+            showToast(`سحبت أرباحك بنجاح عند ${crashGame.multiplier.toFixed(2)}x وربحت ${payout} ${window.state.user.currency}!`, 'success');
+            updateCrashActionButton();
+        }
+
+        window.handleCrashAction = function() {
+            const stakeInput = document.getElementById('crash-stake-input');
+            const stake = stakeInput ? (parseFloat(stakeInput.value) || 50) : 50;
+
+            if (crashGame.phase === 'waiting') {
+                if (crashGame.hasPlacedBet) {
+                    window.state.balance += crashGame.currentBetAmount;
+                    updateWalletUI();
+                    crashGame.hasPlacedBet = false;
+                    crashGame.currentBetAmount = 0;
+                    showToast('تم إلغاء الرهان واسترجاع المبلغ.', 'info');
+                } else {
+                    if (stake > window.state.balance) {
+                        showToast('رصيدك غير كافٍ لوضع هذا الرهان.', 'error');
+                        return;
+                    }
+                    window.state.balance -= stake;
+                    updateWalletUI();
+                    crashGame.hasPlacedBet = true;
+                    crashGame.currentBetAmount = stake;
+                    showToast(`تم وضع رهان بقيمة ${stake} ${window.state.user.currency}`, 'success');
+                }
+                updateCrashActionButton();
+            } else if (crashGame.phase === 'flying') {
+                if (crashGame.hasPlacedBet && !crashGame.hasCashedOut) {
+                    cashOutCrashBet();
+                }
+            }
+        };
+
+        function updateCrashActionButton() {
+            const btn = document.getElementById('crash-action-btn');
+            const title = document.getElementById('crash-btn-title');
+            const sub = document.getElementById('crash-btn-subtitle');
+            const stakeInput = document.getElementById('crash-stake-input');
+            const stake = stakeInput ? (parseFloat(stakeInput.value) || 50) : 50;
+
+            if (!btn || !title || !sub) return;
+
+            if (crashGame.phase === 'waiting') {
+                if (crashGame.hasPlacedBet) {
+                    btn.className = 'w-full min-h-[104px] rounded-2xl bg-red-500 hover:bg-red-600 text-white font-black text-lg shadow-lg cursor-pointer flex flex-col items-center justify-center p-4';
+                    title.textContent = 'إلغاء الرهان';
+                    sub.textContent = `${crashGame.currentBetAmount} ${window.state.user.currency}`;
+                } else {
+                    btn.className = 'w-full min-h-[104px] rounded-2xl bg-brand-green hover:bg-brand-greenHover text-navy-950 font-black text-lg shadow-lg cursor-pointer flex flex-col items-center justify-center p-4 glow-effect';
+                    title.textContent = 'ضع الرهان';
+                    sub.textContent = `${stake} ${window.state.user.currency}`;
+                }
+            } else if (crashGame.phase === 'flying') {
+                if (crashGame.hasPlacedBet && !crashGame.hasCashedOut) {
+                    btn.className = 'w-full min-h-[104px] rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-navy-950 font-black text-lg shadow-lg cursor-pointer flex flex-col items-center justify-center p-4 glow-effect';
+                    title.textContent = 'اسحب الأرباح الآن!';
+                    sub.textContent = `${(crashGame.currentBetAmount * crashGame.multiplier).toFixed(2)} (${crashGame.multiplier.toFixed(2)}x)`;
+                } else {
+                    btn.className = 'w-full min-h-[104px] rounded-2xl bg-navy-700 text-slate-400 font-bold text-base cursor-not-allowed flex flex-col items-center justify-center p-4';
+                    title.textContent = 'الرحلة جارية...';
+                    sub.textContent = 'انتظر الجولة القادمة';
+                }
+            }
+        }
+
+        window.setCrashStake = function(val) {
+            const input = document.getElementById('crash-stake-input');
+            if (!input) return;
+            input.value = val === 'max' ? Math.max(1, Math.floor(window.state.balance)) : val;
+            updateCrashActionButton();
+        };
+
+        window.adjustCrashStake = function(f) {
+            const input = document.getElementById('crash-stake-input');
+            if (!input) return;
+            input.value = Math.max(1, Math.round((parseFloat(input.value) || 50) * f));
+            updateCrashActionButton();
+        };
+
+        window.togglePredictorReveal = function() {
+            crashGame.predictorRevealed = !crashGame.predictorRevealed;
+            const predBox = document.getElementById('predictor-value-box');
+            if (predBox) predBox.textContent = crashGame.predictorRevealed ? `${crashGame.targetCrashPoint.toFixed(2)}x` : '**.**x';
+        };
+
+        function renderCrashHistory() {
+            const container = document.getElementById('crash-history-bar');
+            if (!container) return;
+            container.innerHTML = crashGame.history.map(v => `<span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-500/15 text-blue-400 border border-blue-500/30 num-font">${v.toFixed(2)}x</span>`).join('');
+        }
+
+        function renderSimPlayers() {
+            const container = document.getElementById('crash-players-feed');
+            if (!container) return;
+            container.innerHTML = crashGame.simPlayers.map(p => `
+                <div class="flex items-center justify-between bg-navy-950 px-2.5 py-1.5 rounded-lg text-xs text-slate-300">
+                    <span>${p.name}</span>
+                    <span class="num-font text-brand-green">${p.bet} ${window.state.user.currency}</span>
+                </div>
+            `).join('');
+        }
+
+        function resizeCrashCanvas() {
+            const c = document.getElementById('crash-canvas');
+            if (!c || !c.parentElement) return;
+            c.width = c.parentElement.clientWidth;
+            c.height = c.parentElement.clientHeight;
+        }
+
+        function drawCrashCanvas(now) {
+            const c = document.getElementById('crash-canvas');
+            if (!c) return;
+            const ctx = c.getContext('2d');
+            const w = c.width;
+            const h = c.height;
+
+            ctx.fillStyle = '#060e1b';
+            ctx.fillRect(0, 0, w, h);
+
+            if (crashGame.phase === 'flying' || crashGame.phase === 'crashed') {
+                const prog = Math.min(1, (crashGame.multiplier - 1) / 3);
+                ctx.beginPath();
+                ctx.moveTo(30, h - 30);
+                ctx.quadraticCurveTo(w * 0.5, h - 30, 30 + w * 0.6 * prog, h - 30 - h * 0.6 * prog);
+                ctx.lineWidth = 4;
+                ctx.strokeStyle = '#00d26a';
+                ctx.stroke();
+            }
+        }
+
+        function gameLoop(now) {
+            if (!crashGame.lastFrameTime) crashGame.lastFrameTime = now;
+            const dt = now - crashGame.lastFrameTime;
+            crashGame.lastFrameTime = now;
+
+            if (crashGame.phase === 'waiting') {
+                crashGame.waitTimeLeft -= dt;
+                const pct = Math.max(0, (crashGame.waitTimeLeft / crashGame.waitTimeTotal) * 100);
+                const bar = document.getElementById('crash-countdown-bar');
+                if (bar) bar.style.width = `${pct}%`;
+                if (crashGame.waitTimeLeft <= 0) startFlightPhase();
+            } else if (crashGame.phase === 'flying') {
+                const sec = (now - crashGame.flightStartTime) / 1000;
+                crashGame.multiplier = parseFloat(Math.pow(Math.E, 0.15 * sec).toFixed(2));
+                const mDisp = document.getElementById('crash-multiplier-display');
+                if (mDisp) mDisp.textContent = `${crashGame.multiplier.toFixed(2)}x`;
+                updateCrashActionButton();
+
+                if (crashGame.multiplier >= crashGame.targetCrashPoint) triggerCrashPhase();
+            }
+
+            if (window.state.activeTab === 'crash') drawCrashCanvas(now);
+            requestAnimationFrame(gameLoop);
+        }
+
+        window.addEventListener('resize', resizeCrashCanvas);
+    </script>
+</body>
+</html>
